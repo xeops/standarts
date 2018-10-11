@@ -154,8 +154,7 @@
 В случае PHP стандарт скобок равен стандартам
 [PSR-1](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md)
 и [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md).
-Для методов и классов открывающая скобка ставится на новой строке.
-Во всех остальных случаях (управляющие конструкции и т. д.) в конце текущей строки:
+Открывающая скобка ставится на новой строке.
 
 ```php
 class Controller
@@ -171,10 +170,12 @@ class Controller
 	{
 		/* @var Document $model */
 		$model = Document::find(['alias' => $alias]);
-		if ($model === null) {
+		if ($model === null) 
+		{
 			throw new HttpException('404', 'Not Found');
 		}
-		if (App::user->isGuest && $model->access !== Document::TYPE_PUBLIC) {
+		elseif (App::user->isGuest && $model->access !== Document::TYPE_PUBLIC) 
+		{
 			throw new HttpException('403', 'Access Denied');
 		}
 		return $model;
